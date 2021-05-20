@@ -1,0 +1,37 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+#state{
+    margin-right: 30px;
+}
+
+.current-months{
+    display: flex;
+    margin-top: 30px;
+}
+
+.month{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    height: 200px;
+    width: 400px;
+    margin-right: 20px;
+}
+
+.box{
+    height: calc(100%/5);
+    width: calc(100%/7);
+    background-color: rgb(143, 146, 146);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
