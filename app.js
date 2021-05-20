@@ -111,8 +111,14 @@ let getAppointmentsForDate=function (){
         console.log(dateStr,"hello4")
         getAppointments(selectedDistrict,dateStr)
         .then((data)=>{
-            if(data["sessions"].length===0){
+            let allSessions=data["sessions"]
+            if(allSessions.length===0){
                 document.querySelector(".result").innerText="Nothing found"
+            }
+            else{
+                for (s of allSessions){
+                    document.querySelector('.available').innerHTML+=s.name+'<br>'
+                }
             }
         })
     }
