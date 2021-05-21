@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="app.css">
 </head>
+
 <body>
     <select id="state"></select>
     <div class="selected-state"></div>
@@ -17,7 +19,44 @@
         <div class="month3 month"></div>
     </div>
     <div class="result"></div>
-    <div class="available"><br><br></div>
+    <!--
+        Centre Name
+        Fee type
+        Vaccine
+        Dose (1 and 2)
+    -->
+    <div class="selector">
+        <input type="radio" name="avail" value="all" id="all"><label for="all">All centres</label>
+        <input type="radio" name="avail" value="only" id="only"><label for="only">Only available centres</label>
+    </div>
+    <div class="apt-table">
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Pincode</th>
+                    <th rowspan="2">Centre Name</th>
+                    <th rowspan="2">Fee Type</th>
+                    <th rowspan="2">Vaccine</th>
+                    <th colspan="2">Dose</th>
+                </tr>
+                <tr>
+                    <th colspan="1">Dose 1</th>
+                    <th colspan="1">Dose 2</th>
+                </tr>
+            </thead>
+            <tbody id="appointments">
+                <!-- <tr>
+                    <td>500000</td>
+                    <td>Esamia Bazar UPHC 2D</td>
+                    <td>Free</td>
+                    <td>COVISHIELD</td>
+                    <td>20</td>
+                    <td>30</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
     <script src="app.js"></script>
 </body>
+
 </html>

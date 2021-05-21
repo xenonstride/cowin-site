@@ -35,3 +35,15 @@ button:focus {
     border-bottom: 1px solid black;
 }
 
+table{
+    margin-top: 20px;
+}
+
+table,th,td,tr{
+    border: 1px solid black;
+}
+
+.selector{
+    margin-top: 50px;
+}
+

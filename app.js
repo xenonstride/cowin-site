@@ -97,6 +97,8 @@ async function getAppointments(districtCode,date){
     return data
 }
 
+let data_elems=["pincode","name","fee_type","vaccine","available_capacity_dose1","available_capacity_dose2"]
+
 let getAppointmentsForDate=function (){
     console.log(selectedDistrict,"hello3")
     console.log(typeof selectedDistrict!=='undefined')
@@ -116,8 +118,25 @@ let getAppointmentsForDate=function (){
                 document.querySelector(".result").innerText="Nothing found"
             }
             else{
+                let table=document.querySelector("#appointments")
                 for (s of allSessions){
-                    document.querySelector('.available').innerHTML+=s.name+'<br>'
+                    let row=document.createElement("tr")
+                    for(e of data_elems){
+                        let td=document.createElement('td')
+                        if(e!=="name"){
+                            td.innerText=s[e]
+                        }
+                        else{
+                            td.innerText=`${s[e]}, ${s["block_name"]}`
+                        }
+                        if(e==="available_capacity_dose1" || e==="available_capacity_dose2"){
+                            if (parseInt(s[e])<0){
+                                td.innerText="0"
+                            }
+                        }
+                        row.append(td)
+                    }
+                    table.append(row)
                 }
             }
         })
@@ -135,4 +154,10 @@ for (m of currMonths){
         day.addEventListener('click',getAppointmentsForDate)
     }
     c+=1
+}
+
+for (b of document.querySelectorAll("input[name='avail']")){
+    b.addEventListener('click',()=>{
+        
+    })
 }
