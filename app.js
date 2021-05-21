@@ -36,8 +36,8 @@ let selectedDistrict
 
 let clearTable=()=>{
     let t=document.querySelector("#appointments")
-    for (row of t.children){
-        row.remove()
+    while(t.firstChild){
+        t.removeChild(t.firstChild)
     }
 }
 
