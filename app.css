@@ -5,6 +5,10 @@ button:focus {
     outline: none;
 }
 
+body{
+    font-family: "Noto Sans JP";
+}
+
 #state{
     margin-right: 30px;
 }
@@ -12,6 +16,8 @@ button:focus {
 .current-months{
     display: flex;
     margin-top: 30px;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .month{
@@ -19,20 +25,26 @@ button:focus {
     flex-wrap: wrap;
     align-content: flex-start;
     height: 200px;
-    width: 400px;
-    margin-right: 20px;
+    width: calc(95%/3);
+    margin-right: 20px; 
 }
 
 .box{
     height: calc(100%/5);
     width: calc(100%/7);
-    background-color: rgb(143, 146, 146);
+    background-color: rgb(185, 233, 211);
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
+    transition: 0.5s all;
+}
+
+.box:hover{
+    background-color: rgb(72, 218, 125);
+    cursor: pointer;
 }
 
 table{
@@ -41,6 +53,11 @@ table{
 
 table,th,td,tr{
     border: 1px solid black;
+}
+
+th,td{
+    width: 200px;
+    text-align: center;
 }
 
 .selector{

@@ -34,24 +34,31 @@ districtSelector.id="district"
 let districts={}
 let selectedDistrict
 
+let clearTable=()=>{
+    let t=document.querySelector("#appointments")
+    for (row of t.children){
+        row.remove()
+    }
+}
+
 statesSelector.addEventListener('input',()=>{
+    clearTable()
     districts={}
-    document.querySelector(".selected-state").innerText=statesSelector.value
+    document.querySelector(".selected-state").innerText+=statesSelector.value
     if (selectedDistrict!==undefined){
         selectedDistrict=undefined
-        document.querySelector(".selected-district").innerText='' 
+        document.querySelector(".selected-district").innerText='Selected District : '
     }
     getDistricts(states[statesSelector.value])
     .then((data)=>{
         let temp=data.districts
-        console.log(temp,"hello1")
         for (x of temp){
             districts[x.district_name]=x.district_id 
         }
         selectedDistrict=districts[Object.keys(districts)[0]]
+        document.querySelector(".selected-district").innerText+=Object.keys(districts)[0]
     })
     .then(()=>{
-        console.log(districts,"hello2")
         if (document.querySelector("#district")==null){
             statesSelector.insertAdjacentElement('afterend',districtSelector)
         } 
@@ -64,13 +71,13 @@ statesSelector.addEventListener('input',()=>{
             dis.innerText=district
             districtSelector.appendChild(dis)
         }
-    })
-       
+    })  
 })
 
 districtSelector.addEventListener('input',()=>{
+    clearTable()
     selectedDistrict=districts[districtSelector.value]
-    document.querySelector(".selected-district").innerText=districtSelector.value
+    document.querySelector(".selected-district").innerText+=districtSelector.value
 })
 
 monthDays={
@@ -89,7 +96,7 @@ monthDays={
 }
 
 // change this to three months currently
-currMonths=[5,6,7]
+currMonths=[5]
 
 async function getAppointments(districtCode,date){
     let res = await fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=${districtCode}&date=${date}`)
@@ -100,9 +107,8 @@ async function getAppointments(districtCode,date){
 let data_elems=["pincode","name","fee_type","vaccine","available_capacity_dose1","available_capacity_dose2"]
 
 let getAppointmentsForDate=function (){
-    console.log(selectedDistrict,"hello3")
-    console.log(typeof selectedDistrict!=='undefined')
-    if(typeof selectedDistrict!=='undefined' && selectedDistrict!==''){
+    clearTable()
+    if(typeof selectedDistrict!=='undefined' && selectedDistrict!=='Selected District : '){
         date=this.innerText
         month=currMonths[parseInt(this.parentNode.classList[0].slice(-1))-1].toString()
         if (month.length===1){
@@ -156,8 +162,14 @@ for (m of currMonths){
     c+=1
 }
 
-for (b of document.querySelectorAll("input[name='avail']")){
-    b.addEventListener('click',()=>{
-        
-    })
-}
+// let checked
+// for (b of document.querySelectorAll("input[name='avail']")){
+//     b.addEventListener('click',()=>{
+//         for (b of document.querySelectorAll("input[name='avail']")){
+//             if (b.checked===true){
+//                 checked=b.value
+//                 break
+//             }
+//         }
+//     })
+// }

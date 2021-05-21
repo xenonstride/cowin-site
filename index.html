@@ -7,12 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="app.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <select id="state"></select>
-    <div class="selected-state"></div>
-    <div class="selected-district"></div>
+    <div class="selected-state">Selected State : </div>
+    <div class="selected-district">Selected District : </div>
     <div class="current-months">
         <div class="month1 month"></div>
         <div class="month2 month"></div>
@@ -27,7 +29,8 @@
     -->
     <div class="selector">
         <input type="radio" name="avail" value="all" id="all"><label for="all">All centres</label>
-        <input type="radio" name="avail" value="only" id="only"><label for="only">Only available centres</label>
+        <input type="radio" name="avail" value="only" id="only"><label for="only-1">Dose 1 available</label>
+        <input type="radio" name="avail" value="only" id="only"><label for="only-2">Dose 2 available</label>
     </div>
     <div class="apt-table">
         <table>
