@@ -44,7 +44,7 @@ let clearTable=()=>{
 statesSelector.addEventListener('input',()=>{
     clearTable()
     districts={}
-    document.querySelector(".selected-state").innerText+=statesSelector.value
+    document.querySelector(".selected-state").innerText=statesSelector.value
     if (selectedDistrict!==undefined){
         selectedDistrict=undefined
         document.querySelector(".selected-district").innerText='Selected District : '
@@ -56,7 +56,7 @@ statesSelector.addEventListener('input',()=>{
             districts[x.district_name]=x.district_id 
         }
         selectedDistrict=districts[Object.keys(districts)[0]]
-        document.querySelector(".selected-district").innerText+=Object.keys(districts)[0]
+        document.querySelector(".selected-district").innerText=Object.keys(districts)[0]
     })
     .then(()=>{
         if (document.querySelector("#district")==null){
@@ -77,7 +77,7 @@ statesSelector.addEventListener('input',()=>{
 districtSelector.addEventListener('input',()=>{
     clearTable()
     selectedDistrict=districts[districtSelector.value]
-    document.querySelector(".selected-district").innerText+=districtSelector.value
+    document.querySelector(".selected-district").innerText=districtSelector.value
 })
 
 monthDays={
@@ -136,8 +136,12 @@ let getAppointmentsForDate=function (){
                             td.innerText=`${s[e]}, ${s["block_name"]}`
                         }
                         if(e==="available_capacity_dose1" || e==="available_capacity_dose2"){
-                            if (parseInt(s[e])<0){
+                            if (parseInt(s[e])<=0){
                                 td.innerText="0"
+                                td.classList.add("red")
+                            }
+                            else{
+                                td.classList.add("green")
                             }
                         }
                         row.append(td)

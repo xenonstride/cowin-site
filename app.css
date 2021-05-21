@@ -64,3 +64,10 @@ th,td{
     margin-top: 50px;
 }
 
+.green{
+    background-color: rgb(95, 230, 95);
+}
+
+.red{
+    background-color: rgb(236, 96, 96);
+}
