@@ -96,7 +96,7 @@ monthDays={
 }
 
 // change this to three months currently
-currMonths=[5]
+currMonths=[7]
 
 async function getAppointments(districtCode,date){
     let res = await fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=${districtCode}&date=${date}`)
